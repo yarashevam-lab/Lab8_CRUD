@@ -240,7 +240,7 @@ namespace Lab8_CRUD
             }
             return true;
         }
-        
+        // Экспорт в CSV для лабораторной 9
         private void buttonExport_Click(object sender, EventArgs e)
         {
             
