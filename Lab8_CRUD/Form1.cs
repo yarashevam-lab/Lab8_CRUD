@@ -16,7 +16,7 @@ namespace Lab8_CRUD
 {
     public partial class Form1 : Form
     {
-        private readonly string connectionString = @"Data Source=PC238-4;Initial Catalog=StudentDB;Integrated Security=True;";
+        private readonly string connectionString = @"Data Source=Madina\SQLEXPRESS;Initial Catalog=StudentDB;Integrated Security=True;";
         private DataTable studentsTable = new DataTable();
         private int selectedId = -1;
 
@@ -294,6 +294,40 @@ namespace Lab8_CRUD
             
             ClearFields(); 
             UpdateStatus("Действие отменено, данные перезагружены.");
+        }
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string searchName = textBoxName.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(searchName))
+            {
+                MessageBox.Show("Введите ФИО для поиска.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string sql = @"SELECT Id, FullName, Age, GroupName 
+                           FROM Students 
+                           WHERE FullName LIKE @name";
+                    SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@name", "%" + searchName + "%");
+
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+
+                    dataGridViewStudents.DataSource = table;
+                    labelStatus.Text = "Найдено: " + table.Rows.Count;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка поиска: " + ex.Message);
+                }
+            }
         }
     }
 }

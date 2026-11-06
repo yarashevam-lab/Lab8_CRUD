@@ -44,6 +44,7 @@
             this.numericGrade = new System.Windows.Forms.NumericUpDown();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericGrade)).BeginInit();
@@ -207,11 +208,22 @@
             this.buttonExport.UseVisualStyleBackColor = true;
             this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSearch.Location = new System.Drawing.Point(765, 214);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(164, 43);
+            this.buttonSearch.TabIndex = 16;
+            this.buttonSearch.Text = "Поиск по ФИО";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 553);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.numericGrade);
@@ -257,6 +269,7 @@
         private System.Windows.Forms.NumericUpDown numericGrade;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
 
